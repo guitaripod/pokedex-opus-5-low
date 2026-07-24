@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Empty, Loading, Panel, TypeBadge, typeColor } from '../components/ui'
 import { getIndex, getMove, getMoves, getTypes } from '../lib/data'
 import { useAsync } from '../lib/hooks'
-import { STAT_LABELS, TYPE_ORDER, buildChart, title } from '../lib/util'
+import { STAT_LABELS, TYPE_ORDER, buildChart, effLabel, title } from '../lib/util'
 
 export default function MoveDetail() {
   const { id = '' } = useParams()
@@ -88,7 +88,7 @@ export default function MoveDetail() {
                 return (
                   <div key={t} style={{ display: 'grid', gap: 4 }}>
                     <TypeBadge type={t} sm />
-                    <div className={`eff-cell eff-${mult === 0.5 ? '50' : String(mult)}`}>{mult}×</div>
+                    <div className={`eff-cell eff-${mult === 0.5 ? '50' : String(mult)}`}>{effLabel(mult)}×</div>
                   </div>
                 )
               })}
